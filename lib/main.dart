@@ -1,9 +1,10 @@
 //导入包。此行代码作用是导入了Material UI组件库。
 // Material是一种标准的移动端和web端的视觉设计语言，
 // Flutter默认提供了一套丰富的Material风格的UI组件。
-import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 import 'dart:developer';
+
+import 'package:english_words/english_words.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -132,7 +133,9 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             RandomWordsWidget(),
-            Echo(text: "haha",),
+            Echo(
+              text: "haha",
+            ),
           ],
         ),
       ),
@@ -155,7 +158,7 @@ class NewRoute extends StatelessWidget {
   }
 }
 
-class RandomWordsWidget extends StatelessWidget{
+class RandomWordsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 生成随机字符串
@@ -165,22 +168,58 @@ class RandomWordsWidget extends StatelessWidget{
       child: Text(wordPair.toString()),
     );
   }
-
 }
 
-class Echo extends StatelessWidget{
-
+class Echo extends StatelessWidget {
   final String text;
   final Color backgroundColor;
 
-  const Echo({Key key,@required this.text,this.backgroundColor:Colors.grey,}):super();
+  const Echo({
+    Key key,
+    @required this.text,
+    this.backgroundColor: Colors.grey,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
     return Center(
-        child:Container(
-          color: backgroundColor,
-          child: Text(text),),
+      child: Container(
+        color: backgroundColor,
+        child: Text(text),
+      ),
     );
+  }
+}
+
+class CounterWidget extends StatefulWidget {
+  final int initValue;
+
+  const CounterWidget(
+      {Key key,
+      //TODO :0 是什么意思？
+      this.initValue: 0});
+
+//  @override
+//  State<StatefulWidget> createState() {
+//    return _CounterWidgetState();
+//  }
+  @override
+  State<StatefulWidget> createState() => _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State<CounterWidget> {
+
+  int _counter;
+
+
+  @override
+  void initState() {
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return null;
   }
 }
