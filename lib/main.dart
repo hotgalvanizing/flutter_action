@@ -132,6 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             RandomWordsWidget(),
+            Echo(text: "haha",),
           ],
         ),
       ),
@@ -165,4 +166,21 @@ class RandomWordsWidget extends StatelessWidget{
     );
   }
 
+}
+
+class Echo extends StatelessWidget{
+
+  final String text;
+  final Color backgroundColor;
+
+  const Echo({Key key,@required this.text,this.backgroundColor:Colors.grey,}):super();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child:Container(
+          color: backgroundColor,
+          child: Text(text),),
+    );
+  }
 }
