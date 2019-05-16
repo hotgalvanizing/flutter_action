@@ -2,6 +2,8 @@
 // Material是一种标准的移动端和web端的视觉设计语言，
 // Flutter默认提供了一套丰富的Material风格的UI组件。
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
+import 'dart:developer';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +25,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+      routes: {
+        "new_page": (context) => NewRoute(),
+      },
       home: MyHomePage(title: 'Flutter Demo Home Page'),
       darkTheme: ThemeData(
         primarySwatch: Colors.green,
@@ -60,6 +65,13 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      //输出到控制台
+      print(_counter);
+
+      debugPrint(_counter.toString());
+
+      //debugger()语句采用一个可选when参数，您可以指定该参数仅在特定条件为真时中断
+      debugger(when: _counter > 5);
     });
   }
 
@@ -111,12 +123,15 @@ class _MyHomePageState extends State<MyHomePage> {
               textColor: Colors.blue,
               onPressed: () {
                 //导航到新路由
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (content) {
-                  return new NewRoute();
-                }));
+//                Navigator.push(context,
+//                    new MaterialPageRoute(builder: (content) {
+//                  return new NewRoute();
+//                }));
+                debugDumpApp();
+                Navigator.pushNamed(context, "new_page");
               },
             ),
+            RandomWordsWidget(),
           ],
         ),
       ),
@@ -137,4 +152,17 @@ class NewRoute extends StatelessWidget {
       body: Center(child: Text("this is the new route")),
     );
   }
+}
+
+class RandomWordsWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // 生成随机字符串
+    final wordPair = new WordPair.random();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(wordPair.toString()),
+    );
+  }
+
 }
