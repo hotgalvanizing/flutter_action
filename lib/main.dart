@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+/**
+ * MaterialApp
+ */
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -37,6 +40,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/**
+ * 首页
+ */
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -55,6 +61,9 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+/**
+ * 首页状态管理
+ */
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -136,6 +145,16 @@ class _MyHomePageState extends State<MyHomePage> {
             Echo(
               text: "haha",
             ),
+            FlatButton(
+              child: Text("Test"),
+              textColor: Colors.green,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return CounterWidget();
+                }));
+              },
+            ),
           ],
         ),
       ),
@@ -148,6 +167,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+/**
+ * 一个新的路由
+ */
 class NewRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -158,6 +180,9 @@ class NewRoute extends StatelessWidget {
   }
 }
 
+/**
+ * 首页中的一个weight
+ */
 class RandomWordsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -170,6 +195,9 @@ class RandomWordsWidget extends StatelessWidget {
   }
 }
 
+/**
+ *
+ */
 class Echo extends StatelessWidget {
   final String text;
   final Color backgroundColor;
@@ -208,18 +236,99 @@ class CounterWidget extends StatefulWidget {
 }
 
 class _CounterWidgetState extends State<CounterWidget> {
-
   int _counter;
-
 
   @override
   void initState() {
-
+    super.initState();
+    _counter = widget.initValue;
+    print("initState");
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
+    print("build");
+    return new Scaffold(
+        appBar: AppBar(
+          title: Text("test"),
+        ),
+        body: Center(
+          child: FlatButton(
+            child: Text('$_counter'),
+            //点击后计数器自增
+            onPressed: () => setState(
+                  () => ++_counter,
+                ),
+          ),
+        ));
+  }
+
+  @override
+  void didUpdateWidget(CounterWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget");
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("deactive");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose");
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    print("reassemble");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChangeDependencies");
+  }
+}
+
+class TapboxA extends StatefulWidget {
+  TapboxA({Key key}) : super(key: key);
+
+  @override
+  State<TapboxA> createState() {
+    return new _TapboxAState();
+  }
+}
+
+class _TapboxAState extends State<TapboxA> {
+  bool _active = false;
+
+  void _handleTap() {
+    setState(() {
+      _active = !_active;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new GestureDetector(
+      onTap: _handleTap,
+      child: new Container(
+        child: new Center(
+          child: new Text(
+            _active ? 'Active' : 'Inactive',
+            style: new TextStyle(fontSize: 32.0, color: Colors.white),
+          ),
+        ),
+        width: 200.0,
+        height: 200.0,
+        decoration: new BoxDecoration(
+          color: _active ? Colors.lightGreen[700] : Colors.grey[600],
+        ),
+      ),
+    );
   }
 }
