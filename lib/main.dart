@@ -5,6 +5,9 @@ import 'dart:developer';
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_action/route1.dart';
+import 'package:flutter_action/route2.dart';
+import 'package:flutter_action/route3.dart';
 
 void main() => runApp(MyApp());
 
@@ -46,15 +49,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -69,11 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
       //输出到控制台
       print(_counter);
@@ -87,12 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
 
     //Scaffold包含：导航栏和Body以及FloatingActionButton(如果需要)
     return Scaffold(
@@ -102,23 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+        //TODO colume是一个什么样的weight
         child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
@@ -129,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.display1,
             ),
             FlatButton(
-              child: Text("new route"),
+              child: Text("Route1：new route"),
               textColor: Colors.blue,
               onPressed: () {
                 //导航到新路由
@@ -146,12 +114,21 @@ class _MyHomePageState extends State<MyHomePage> {
               text: "haha",
             ),
             FlatButton(
-              child: Text("Test"),
+              child: Text("Route2：Test"),
               textColor: Colors.green,
               onPressed: () {
                 Navigator.push(context,
                     new MaterialPageRoute(builder: (context) {
                   return CounterWidget();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("Route3:Test"),
+              textColor: Colors.amber,
+              onPressed: (){
+                Navigator.push(context, new MaterialPageRoute(builder: (context){
+                  return TestRoute3();
                 }));
               },
             ),
@@ -163,19 +140,6 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
-/**
- * 一个新的路由
- */
-class NewRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("New route")),
-      body: Center(child: Text("this is the new route")),
     );
   }
 }
@@ -195,9 +159,6 @@ class RandomWordsWidget extends StatelessWidget {
   }
 }
 
-/**
- *
- */
 class Echo extends StatelessWidget {
   final String text;
   final Color backgroundColor;
@@ -219,116 +180,4 @@ class Echo extends StatelessWidget {
   }
 }
 
-class CounterWidget extends StatefulWidget {
-  final int initValue;
 
-  const CounterWidget(
-      {Key key,
-      //TODO :0 是什么意思？
-      this.initValue: 0});
-
-//  @override
-//  State<StatefulWidget> createState() {
-//    return _CounterWidgetState();
-//  }
-  @override
-  State<StatefulWidget> createState() => _CounterWidgetState();
-}
-
-class _CounterWidgetState extends State<CounterWidget> {
-  int _counter;
-
-  @override
-  void initState() {
-    super.initState();
-    _counter = widget.initValue;
-    print("initState");
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    print("build");
-    return new Scaffold(
-        appBar: AppBar(
-          title: Text("test"),
-        ),
-        body: Center(
-          child: FlatButton(
-            child: Text('$_counter'),
-            //点击后计数器自增
-            onPressed: () => setState(
-                  () => ++_counter,
-                ),
-          ),
-        ));
-  }
-
-  @override
-  void didUpdateWidget(CounterWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    print("didUpdateWidget");
-  }
-
-  @override
-  void deactivate() {
-    super.deactivate();
-    print("deactive");
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    print("dispose");
-  }
-
-  @override
-  void reassemble() {
-    super.reassemble();
-    print("reassemble");
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    print("didChangeDependencies");
-  }
-}
-
-class TapboxA extends StatefulWidget {
-  TapboxA({Key key}) : super(key: key);
-
-  @override
-  State<TapboxA> createState() {
-    return new _TapboxAState();
-  }
-}
-
-class _TapboxAState extends State<TapboxA> {
-  bool _active = false;
-
-  void _handleTap() {
-    setState(() {
-      _active = !_active;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new GestureDetector(
-      onTap: _handleTap,
-      child: new Container(
-        child: new Center(
-          child: new Text(
-            _active ? 'Active' : 'Inactive',
-            style: new TextStyle(fontSize: 32.0, color: Colors.white),
-          ),
-        ),
-        width: 200.0,
-        height: 200.0,
-        decoration: new BoxDecoration(
-          color: _active ? Colors.lightGreen[700] : Colors.grey[600],
-        ),
-      ),
-    );
-  }
-}
