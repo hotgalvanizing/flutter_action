@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_action/route1.dart';
 import 'package:flutter_action/route2.dart';
 import 'package:flutter_action/route3.dart';
+import 'package:flutter_action/route4.dart';
 
 void main() => runApp(MyApp());
 
@@ -76,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     //Scaffold包含：导航栏和Body以及FloatingActionButton(如果需要)
     return Scaffold(
       appBar: AppBar(
@@ -126,9 +126,20 @@ class _MyHomePageState extends State<MyHomePage> {
             FlatButton(
               child: Text("Route3:Test"),
               textColor: Colors.amber,
-              onPressed: (){
-                Navigator.push(context, new MaterialPageRoute(builder: (context){
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
                   return TestRoute3();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("Route4:Test"),
+              textColor: Colors.grey,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return CupertinoTestRoute();
                 }));
               },
             ),
@@ -179,5 +190,3 @@ class Echo extends StatelessWidget {
     );
   }
 }
-
-
