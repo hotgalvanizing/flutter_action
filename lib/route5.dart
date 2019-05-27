@@ -17,7 +17,6 @@ class TestRow extends StatelessWidget {
               Text("I am Jack"),
             ],
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             textDirection: TextDirection.rtl,
@@ -26,26 +25,24 @@ class TestRow extends StatelessWidget {
               Text("I am Jack"),
             ],
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             verticalDirection: VerticalDirection.up,
             children: <Widget>[
-              Text("hello world",style: TextStyle(fontSize: 30.0),),
+              Text(
+                "hello world",
+                style: TextStyle(fontSize: 30.0),
+              ),
               Text("I am Jack"),
             ],
           ),
-
-
         ],
       ),
     );
   }
 }
 
-
-class TestColumn extends StatelessWidget{
-
+class TestColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,23 +55,40 @@ class TestColumn extends StatelessWidget{
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,//有效
+            mainAxisSize: MainAxisSize.max, //有效
             children: <Widget>[
-              Container(
-                color: Colors.red,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,//无效
-                  children: <Widget>[
-                    Text("hello world"),
-                    Text("I am Jack"),
-                  ],
+
+//              Container(
+//                color: Colors.red,
+//                child: Column(
+//                  mainAxisSize: MainAxisSize.max, //无效
+//                  children: <Widget>[
+//                    Text("hello world"),
+//                    Text("I am Jack"),
+//                  ],
+//                ),
+//              )
+            //TODO 这是一种什么weight
+              Expanded(
+                child: Container(
+                  color: Colors.red,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center, //垂直方向居中对齐
+                    children: <Widget>[
+                      Text("hello world "),
+                      Text("I am Jack "),
+                    ],
+                  ),
                 ),
               )
+
             ],
+
+
+
           ),
         ),
       ),
     );
   }
-
 }

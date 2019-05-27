@@ -10,6 +10,7 @@ import 'package:flutter_action/route2.dart';
 import 'package:flutter_action/route3.dart';
 import 'package:flutter_action/route4.dart';
 import 'package:flutter_action/route5.dart';
+import 'package:flutter_action/route6.dart';
 
 void main() => runApp(MyApp());
 
@@ -153,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             FlatButton(
-              child: Text("Route6:布局Weight-Column"),
+              child: Text("Route5:布局Weight-Column"),
               textColor: Colors.amberAccent,
               onPressed: (){
                 Navigator.push(context, new MaterialPageRoute(builder: (context){
@@ -161,6 +162,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
             ),
+            FlatButton(
+              child: Text("Route6:Flex"),
+              textColor: Colors.black,
+              onPressed: (){
+                Navigator.push(context, new MaterialPageRoute(builder: (context){
+                  return TestFlex();
+                }));
+              },
+            )
           ],
         ),
       ),
