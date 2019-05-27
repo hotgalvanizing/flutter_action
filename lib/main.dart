@@ -9,6 +9,7 @@ import 'package:flutter_action/route1.dart';
 import 'package:flutter_action/route2.dart';
 import 'package:flutter_action/route3.dart';
 import 'package:flutter_action/route4.dart';
+import 'package:flutter_action/route5.dart';
 
 void main() => runApp(MyApp());
 
@@ -85,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        //TODO colume是一个什么样的weight
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.display1,
             ),
             FlatButton(
-              child: Text("Route1：new route"),
+              child: Text("Route1：test new route"),
               textColor: Colors.blue,
               onPressed: () {
                 //导航到新路由
@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             FlatButton(
-              child: Text("Route3:Test"),
+              child: Text("Route3:Test State"),
               textColor: Colors.amber,
               onPressed: () {
                 Navigator.push(context,
@@ -134,12 +134,30 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             FlatButton(
-              child: Text("Route4:Test"),
+              child: Text("Route4:Test Cupertino"),
               textColor: Colors.grey,
               onPressed: () {
                 Navigator.push(context,
                     new MaterialPageRoute(builder: (context) {
                   return CupertinoTestRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("Route5:布局Weight-Row"),
+              textColor: Colors.amberAccent,
+              onPressed: (){
+                Navigator.push(context, new MaterialPageRoute(builder: (context){
+                  return TestRow();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("Route6:布局Weight-Column"),
+              textColor: Colors.amberAccent,
+              onPressed: (){
+                Navigator.push(context, new MaterialPageRoute(builder: (context){
+                  return TestColumn();
                 }));
               },
             ),
