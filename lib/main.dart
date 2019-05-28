@@ -11,6 +11,7 @@ import 'package:flutter_action/route3.dart';
 import 'package:flutter_action/route4.dart';
 import 'package:flutter_action/route5.dart';
 import 'package:flutter_action/route6.dart';
+import 'package:flutter_action/route7.dart';
 
 void main() => runApp(MyApp());
 
@@ -86,92 +87,153 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            FlatButton(
-              child: Text("Route1：test new route"),
-              textColor: Colors.blue,
-              onPressed: () {
-                //导航到新路由
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'You have pushed the button this many times:',
+                ),
+                Text(
+                  '$_counter',
+                  style: Theme.of(context).textTheme.display1,
+                ),
+                FlatButton(
+                  child: Text("Route1：test new route"),
+                  textColor: Colors.blue,
+                  onPressed: () {
+                    //导航到新路由
 //                Navigator.push(context,
 //                    new MaterialPageRoute(builder: (content) {
 //                  return new NewRoute();
 //                }));
-                debugDumpApp();
-                Navigator.pushNamed(context, "new_page");
-              },
+                    debugDumpApp();
+                    Navigator.pushNamed(context, "new_page");
+                  },
+                ),
+                RandomWordsWidget(),
+                Echo(
+                  text: "haha",
+                ),
+                FlatButton(
+                  child: Text("Route2：Test"),
+                  textColor: Colors.green,
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return CounterWidget();
+                    }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route3:Test State"),
+                  textColor: Colors.amber,
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return TestRoute3();
+                    }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route4:Test Cupertino"),
+                  textColor: Colors.grey,
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return CupertinoTestRoute();
+                    }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route5:布局Weight-Row"),
+                  textColor: Colors.amberAccent,
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return TestRow();
+                    }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route5:布局Weight-Column"),
+                  textColor: Colors.amberAccent,
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return TestColumn();
+                    }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route6:Flex"),
+                  textColor: Colors.black,
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return TestFlex();
+                    }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route7:ScrollView"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return TestScrollView();
+                    }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route7:ScrollView"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return TestScrollView();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route7:ScrollView"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return TestScrollView();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route7:ScrollView"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return TestScrollView();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route7:ScrollView"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return TestScrollView();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route7:ScrollView"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return TestScrollView();
+                        }));
+                  },
+                ),
+              ],
             ),
-            RandomWordsWidget(),
-            Echo(
-              text: "haha",
-            ),
-            FlatButton(
-              child: Text("Route2：Test"),
-              textColor: Colors.green,
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return CounterWidget();
-                }));
-              },
-            ),
-            FlatButton(
-              child: Text("Route3:Test State"),
-              textColor: Colors.amber,
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return TestRoute3();
-                }));
-              },
-            ),
-            FlatButton(
-              child: Text("Route4:Test Cupertino"),
-              textColor: Colors.grey,
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return CupertinoTestRoute();
-                }));
-              },
-            ),
-            FlatButton(
-              child: Text("Route5:布局Weight-Row"),
-              textColor: Colors.amberAccent,
-              onPressed: (){
-                Navigator.push(context, new MaterialPageRoute(builder: (context){
-                  return TestRow();
-                }));
-              },
-            ),
-            FlatButton(
-              child: Text("Route5:布局Weight-Column"),
-              textColor: Colors.amberAccent,
-              onPressed: (){
-                Navigator.push(context, new MaterialPageRoute(builder: (context){
-                  return TestColumn();
-                }));
-              },
-            ),
-            FlatButton(
-              child: Text("Route6:Flex"),
-              textColor: Colors.black,
-              onPressed: (){
-                Navigator.push(context, new MaterialPageRoute(builder: (context){
-                  return TestFlex();
-                }));
-              },
-            )
-          ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

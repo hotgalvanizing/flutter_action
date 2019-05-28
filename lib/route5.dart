@@ -57,7 +57,6 @@ class TestColumn extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max, //有效
             children: <Widget>[
-
 //              Container(
 //                color: Colors.red,
 //                child: Column(
@@ -81,11 +80,7 @@ class TestColumn extends StatelessWidget {
                   ),
                 ),
               )
-
             ],
-
-
-
           ),
         ),
       ),
