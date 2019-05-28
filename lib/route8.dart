@@ -38,29 +38,77 @@ class ScrollControlerTestState extends State<ScrollControlerTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text("滚动控制"),
+        ),
+        body: Scrollbar(
+            child: ListView.builder(
+                itemCount: 100,
+                itemExtent: 50.0,
+                controller: _controller,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text("$index"),
+                  );
+                })),
+        floatingActionButton: !showToTopBtn
+            ? null
+            : FloatingActionButton(
+                child: Icon(Icons.arrow_upward),
+                onPressed: () {
+                  //返回顶部时执行动画
+                  _controller.animateTo(.0,
+                      duration: Duration(microseconds: 200),
+                      curve: Curves.ease);
+                },
+              ));
+  }
+}
+
+class ScrollNotificationTestRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _ScrollNotificationTestRouteState();
+  }
+}
+
+class _ScrollNotificationTestRouteState
+    extends State<ScrollNotificationTestRoute> {
+  String _progress = "0%";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
-        title: Text("滚动控制"),
+        title: Text("ScrollNotification"),
       ),
       body: Scrollbar(
-          child: ListView.builder(
-              itemCount: 100,
-              itemExtent: 50.0,
-              controller: _controller,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text("$index"),
-                );
-              })),
-      floatingActionButton: !showToTopBtn ? null:FloatingActionButton(
-        child: Icon(Icons.arrow_upward),
-        onPressed: (){
-          //返回顶部时执行动画
-          _controller.animateTo(
-              .0,
-              duration: Duration(microseconds: 200),
-              curve: Curves.ease);
-        },
-      )
+          child: NotificationListener<ScrollNotification>(
+              onNotification: (ScrollNotification n) {
+                double progress = n.metrics.pixels / n.metrics.maxScrollExtent;
+                setState(() {
+                  _progress = "${(progress * 100).toInt()}%";
+                });
+                print("BottomEdge: ${n.metrics.extentAfter == 0}");
+              },
+              child: Stack(
+                alignment: Alignment.center,
+                children: <Widget>[
+                  ListView.builder(
+                      itemCount: 100,
+                      itemExtent: 50.0,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text("$index"),
+                        );
+                      }),
+                  CircleAvatar(
+                    radius: 30.0,
+                    child: Text(_progress),
+                    backgroundColor: Colors.black54,
+                  )
+                ],
+              ))),
     );
   }
 }

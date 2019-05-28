@@ -232,6 +232,60 @@ class _MyHomePageState extends State<MyHomePage> {
                         }));
                   },
                 ),
+                FlatButton(
+                  child: Text("Route13:ScrollNotification"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return ScrollNotificationTestRoute();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route12:ScrollControler"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return ScrollControlerTest();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route12:ScrollControler"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return ScrollControlerTest();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route12:ScrollControler"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return ScrollControlerTest();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route12:ScrollControler"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return ScrollControlerTest();
+                        }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("Route12:ScrollControler"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return ScrollControlerTest();
+                        }));
+                  },
+                ),
               ],
             ),
           ),
