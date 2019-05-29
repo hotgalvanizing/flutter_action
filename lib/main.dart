@@ -7,6 +7,8 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_action/route1.dart';
 import 'package:flutter_action/route10.dart';
+import 'package:flutter_action/route11.dart';
+import 'package:flutter_action/route12.dart';
 import 'package:flutter_action/route2.dart';
 import 'package:flutter_action/route3.dart';
 import 'package:flutter_action/route4.dart';
@@ -262,20 +264,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 FlatButton(
-                  child: Text("Route12:ScrollControler"),
+                  child: Text("Route16:DioTestRoute"),
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                          return ScrollControlerTest();
+                          return DioTestRoute();
                         }));
                   },
                 ),
                 FlatButton(
-                  child: Text("Route12:ScrollControler"),
+                  child: Text("Route17:WebSocketRoute"),
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                          return ScrollControlerTest();
+                          return WebSocketRoute();
                         }));
                   },
                 ),
