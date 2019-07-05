@@ -1,22 +1,21 @@
 //导入包。此行代码作用是导入了Material UI组件库。
 // Material是一种标准的移动端和web端的视觉设计语言，
 // Flutter默认提供了一套丰富的Material风格的UI组件。
-import 'dart:developer';
-
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_action/route1.dart';
-import 'package:flutter_action/route10.dart';
-import 'package:flutter_action/route11.dart';
-import 'package:flutter_action/route12.dart';
-import 'package:flutter_action/route2.dart';
-import 'package:flutter_action/route3.dart';
-import 'package:flutter_action/route4.dart';
-import 'package:flutter_action/route5.dart';
-import 'package:flutter_action/route6.dart';
-import 'package:flutter_action/route7.dart';
-import 'package:flutter_action/route8.dart';
-import 'package:flutter_action/route9.dart';
+import 'package:flutter_action/first/route1.dart';
+import 'package:flutter_action/first/route10.dart';
+import 'package:flutter_action/first/route11.dart';
+import 'package:flutter_action/first/route12.dart';
+import 'package:flutter_action/first/route2.dart';
+import 'package:flutter_action/first/route3.dart';
+import 'package:flutter_action/first/route4.dart';
+import 'package:flutter_action/first/route5.dart';
+import 'package:flutter_action/first/route6.dart';
+import 'package:flutter_action/first/route7.dart';
+import 'package:flutter_action/first/route8.dart';
+import 'package:flutter_action/first/route9.dart';
+import 'package:flutter_action/review/reviewroute.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,21 +29,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       routes: {
         "new_page": (context) => NewRoute(),
       },
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Home Page'),
       darkTheme: ThemeData(
         primarySwatch: Colors.green,
       ),
@@ -69,17 +59,17 @@ class MyHomePage extends StatefulWidget {
  */
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  var test = 0;
 
   void _incrementCounter() {
     setState(() {
+//      test = "你好";
       _counter++;
       //输出到控制台
       print(_counter);
-
       debugPrint(_counter.toString());
-
       //debugger()语句采用一个可选when参数，您可以指定该参数仅在特定条件为真时中断
-      debugger(when: _counter > 5);
+//      debugger(when: _counter > 5);
     });
   }
 
@@ -98,12 +88,22 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                FlatButton(
+                  child: Text("Review"),
+                  textColor: Colors.black,
+                  onPressed: () {
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => ReviewRoute()));
+                  },
+                ),
                 Text(
                   'You have pushed the button this many times:',
                 ),
                 Text(
                   '$_counter',
-                  style: Theme.of(context).textTheme.display1,
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .display1,
                 ),
                 FlatButton(
                   child: Text("Route1：test new route"),
@@ -128,8 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                      return CounterWidget();
-                    }));
+                          return CounterWidget();
+                        }));
                   },
                 ),
                 FlatButton(
@@ -138,8 +138,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                      return TestRoute3();
-                    }));
+                          return TestRoute3();
+                        }));
                   },
                 ),
                 FlatButton(
@@ -148,8 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                      return CupertinoTestRoute();
-                    }));
+                          return CupertinoTestRoute();
+                        }));
                   },
                 ),
                 FlatButton(
@@ -158,8 +158,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                      return TestRow();
-                    }));
+                          return TestRow();
+                        }));
                   },
                 ),
                 FlatButton(
@@ -168,8 +168,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                      return TestColumn();
-                    }));
+                          return TestColumn();
+                        }));
                   },
                 ),
                 FlatButton(
@@ -178,8 +178,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                      return TestFlex();
-                    }));
+                          return TestFlex();
+                        }));
                   },
                 ),
                 FlatButton(
@@ -187,8 +187,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (context) {
-                      return TestScrollView();
-                    }));
+                          return TestScrollView();
+                        }));
                   },
                 ),
                 FlatButton(
